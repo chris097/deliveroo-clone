@@ -56,18 +56,6 @@ const FeaturedRow = ({id, title, description}) => {
                 long={20}
                 lat={0}
               />
-              <ResturantCard
-                id={123}
-                imgUrl="https://links.papareact.com/gn7"
-                title="Yo! sushi"
-                rating={0.9}
-                genre="Japanese"
-                address="no: 4 main street"
-                short_description="This is test description"
-                dishes={[]}
-                long={20}
-                lat={0}
-              />
           </ScrollView>
     </View>
   )
