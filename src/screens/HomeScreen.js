@@ -25,14 +25,14 @@ const HomeScreen = () => {
 
     useEffect(() => {
         sanityClient.fetch(`
-            *[_type == 'restaurant'] {
+            *[_type == 'featured'] {
             ...,
             dishes[]=>{
                 type => {
                 name
                 }
             }
-            }[0]
+            }
         `)
             .then((data) => {
                 setFeaturedCategories(data)
@@ -83,25 +83,28 @@ const HomeScreen = () => {
                 <Categories />
 
                 {/* featured */}
-                <FeaturedRow
-                    id="123"
-                    title="Featured"
-                    description="Paid placements from our partners"
+                {featuredCategories.map((category)=> (
+                    <FeaturedRow
+                        key={category._id}
+                    id={category._id}
+                    title={category.name}
+                    description={category.short_description}
                 />
+                ))}
 
                 {/* Tasty Discounts */}
-                <FeaturedRow
+                {/* <FeaturedRow
                     id="1234"
                     title="Tasty Discount"
                     description="Everyone's been enjoy this juicy discount!"
-                />
+                /> */}
 
                 {/* Offers near you */}
-                <FeaturedRow
+                {/* <FeaturedRow
                     id="12345"
                     title="Offers near you"
                     description="Why not support your local resturant tonight!"
-                />
+                /> */}
             </ScrollView>
         </SafeAreaView>
     );
